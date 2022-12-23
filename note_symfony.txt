@@ -3,12 +3,25 @@ Notes symfony
 - Symfony open:local /* Ouvre le serveur local sur le nav */
 - Dans entity @ORM\Table(name="pins") renomme le nom de la table
 - symfony console debug:router => liste les #tes routes
+- symfony console doctrine:migrations:migrate prev => annule la derniere migration
 
 NB: Les bundles permettent d'avoir des fonctionnalité supplementaire
 
-Invite de commande
+Ajouter une date à chaque ligne existante de la table
+    -> Dans l'entité ajouter => @ORM\HasLifecycleCallbacks ce qui permttra         d'ajouter des valeurs aux colonnes existantes avant le persist (Ajouter les evenements du cycle de vie)
+    -> Créer une methode qui s'effectuera avant ou après le persist d'une nouvelle ligne (un objet)
+        * @ORM\PrePersist => avant la creation d'une ligne
+        * @ORM\PreUpdate => avant la modification d'une ligne
+    -> Pour éviter la valeur null dans les lignes on ajoute à chaque colonne
+        options={"default": "CURRENT_TIMESTAMP"}
+        * CURRENT_TIMESTAMP donne la date et l'heure actuelle
 
--> Se connecter à la base de donnée: mysql -u root -p
--> Voir les tables de bdd: show tables
--> Avoir les données une bdd: use nom_bdd;
--> Afficher la description d'une table: describe nom_table
+Modifier le fuseau horaire
+    -> Créer un fichier php.ini
+    -> Lister tous les fuseaux horaires dont on a besoin
+
+Invite de commande
+    -> Se connecter à la base de donnée: mysql -u root -p
+    -> Avoir les données une bdd: use nom_bdd;
+    -> Voir les tables de bdd: show tables
+    -> Afficher la description d'une table: describe nom_table

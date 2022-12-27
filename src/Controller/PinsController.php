@@ -16,9 +16,9 @@ class PinsController extends AbstractController
      */
     public function index(PinRepository $pinRepository, EntityManagerInterface $em): Response
     {
-        /* Modifier le pin 3*/
-        $p3 = $pinRepository->findOneBy(array('id' => 3));
-        $p3->setDescription('Description 3 (edit)...');
+        /* Modifier le pin*/
+        $p4 = $pinRepository->findOneBy(array('id' => 4));
+        $p4->setDescription('Description 4 (edit)...');
         $em->flush();
 
         /* Ordonner les pins du plus nouveau au pls ancien */

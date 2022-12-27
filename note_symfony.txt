@@ -5,6 +5,8 @@ Notes symfony
 - symfony console debug:router => liste les #tes routes
 - symfony console doctrine:migrations:migrate prev => annule la derniere migration
 
+- Le dossier Traits permet de regrouper du code reutilisable dans d'autre fichier php en utilisant => use nom_du_fichier 
+
 NB: Les bundles permettent d'avoir des fonctionnalité supplementaire
 
 Ajouter une date à chaque ligne existante de la table

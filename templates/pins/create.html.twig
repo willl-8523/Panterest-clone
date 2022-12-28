@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'New pin'%}
+
+{% block body %}
+    <h1>Create pin</h1>
+
+    {{ form_start(formCreate) }}
+        {{ form_widget(formCreate) }}
+
+        <input type="submit" value="Create Pin" formnovalidate>
+        {# formnovalidate => desactive la validation html   #}
+        
+    {{ form_end(formCreate) }}
+{% endblock %}

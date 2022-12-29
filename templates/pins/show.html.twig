@@ -11,7 +11,9 @@
     <a href="#" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('js-pin-delete-form').submit();">Delete</a> | 
     <a href="{{ path('app_home') }}">Go Back</a>
 
-    <form id="js-pin-delete-form" action="{{ path('app_pins_delete', {'id' : pin.id }) }}" method="post" style="display:none;">
+    <form id="js-pin-delete-form" action="{{ path('app_pins_delete', {'id' : pin.id }) }}" method="post">
+        <input type="hidden" name='csrf_token' value="{{ csrf_token('pin_deletion_' ~ pin.id) }}">
+        {# pin_deletion_ et csrf_token => on peut l'appeler comme on veut #}
         <input type="hidden" name="_method" value="DELETE">
     </form>
 {% endblock %}

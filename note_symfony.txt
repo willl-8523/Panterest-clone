@@ -9,8 +9,22 @@ Notes symfony
 
 NB: Les bundles permettent d'avoir des fonctionnalité supplementaire
 
+formulaire
+    -> On peut modifier la methode de requête et l'action de soumission
+    $form = $this->createFormBuilder($entite, [
+        'method' => ...
+        'action' => ...
+    ])
+    OU 
+    $form = $this->createFormBuilder($entite)
+            ->setMethod('...') // GET, PUT, POST ...
+            ->setAction('...') // Lien ou envoyer les donnéés
+    
+    NB: setMethod et setAction ne sont disponible que sur createFormBuilder
+    
 Ajouter une date à chaque ligne existante de la table
-    -> Dans l'entité ajouter => @ORM\HasLifecycleCallbacks ce qui permttra         d'ajouter des valeurs aux colonnes existantes avant le persist (Ajouter les evenements du cycle de vie)
+    -> Dans l'entité ajouter => @ORM\HasLifecycleCallbacks ce qui permttra d'ajouter des valeurs aux colonnes existantes avant le persist 
+    (Ajouter les evenements du cycle de vie)
     -> Créer une methode qui s'effectuera avant ou après le persist d'une nouvelle ligne (un objet)
         * @ORM\PrePersist => avant la creation d'une ligne
         * @ORM\PreUpdate => avant la modification d'une ligne

@@ -21,7 +21,13 @@ formulaire
             ->setAction('...') // Lien ou envoyer les donnéés
     
     NB: setMethod et setAction ne sont disponible que sur createFormBuilder
-    
+
+Les routes: 
+    L'ordre des routes est important à respecter. Pour donner     l'importance d'une route par rapport aux autres il faut lui donner une priorité =>
+     /**
+     * @Route("/pins/{id<[0-9]+>}", name="app_pins_delete", methods={"DELETE"}, priority="1")
+     */
+
 Ajouter une date à chaque ligne existante de la table
     -> Dans l'entité ajouter => @ORM\HasLifecycleCallbacks ce qui permttra d'ajouter des valeurs aux colonnes existantes avant le persist 
     (Ajouter les evenements du cycle de vie)
@@ -41,3 +47,6 @@ Invite de commande
     -> Avoir les données une bdd: use nom_bdd;
     -> Voir les tables de bdd: show tables
     -> Afficher la description d'une table: describe nom_table
+
+Time twig
+    -> composer require knplabs/knp-time-bundle => nous donne le temps en durée (6 month ago)

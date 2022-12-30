@@ -5,11 +5,5 @@
 {% block body %}
     <h1>Create pin</h1>
 
-    {{ form_start(formCreate) }}
-        {{ form_widget(formCreate) }}
-
-        <input type="submit" value="Create Pin" formnovalidate>
-        {# formnovalidate => desactive la validation html   #}
-        
-    {{ form_end(formCreate) }}
+    {{ include('/pins/_form.html.twig') }}
 {% endblock %}

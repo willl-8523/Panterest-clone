@@ -1,6 +1,8 @@
     {{ form_start(form) }}
         {{ form_widget(form) }}
 
+        {# <input type="submit" value="{{ submitButtonText | default('Create Pin') }}"> #}
+
         <input type="submit" value="{{ submitButtonText | default('Create Pin') }}" formnovalidate>
         {# formnovalidate => desactive la validation html   #}
         

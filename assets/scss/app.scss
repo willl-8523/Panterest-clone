@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@import 'shared/_variables.scss';
+
+@import "~bootstrap/scss/bootstrap";
+
+// Les variables
+// $primary-font: 'Montserrat';
+// $primary-color-mes: white;
+
+html, body {
+    font-family: $primary-font, sans-serif; 
+}
+
+.alert {
+    padding: 10px;
+    text-align: center;
+    color: $primary-color-mes;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+
+    &.alert-success {
+        background-color: green;
+    }
+
+    &.alert-info {
+        background-color: blue;
+    }
+
+    &.alert-error {
+        background-color: red;
+    }
+}
+
+.me-auto {
+    margin-right: 0 !important;
+    margin-left: auto;
+}

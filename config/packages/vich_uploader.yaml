@@ -1,0 +1,16 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+       pin_image:
+           uri_prefix: /uploads/pins
+           upload_destination: '%kernel.project_dir%/public/uploads/pins'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+# pin_image => On peut choisir le nom que l'on souhaite
+
+# uri_prefix => le prefix du nom de l'image
+
+# upload_destination => la destination ou enrgistrer l'image (panterest-clone/public/uploads/pins)
+
+# namer => comment va être nommé le fichier

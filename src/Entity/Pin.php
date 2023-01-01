@@ -49,6 +49,9 @@ class Pin
      */
     private $imageFile;
 
+
+    private $imageSize;
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -107,6 +110,16 @@ class Pin
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function setImageSize(?int $imageSize): void
+    {
+        $this->imageSize = $imageSize;
+    }
+
+    public function getImageSize(): ?int
+    {
+        return $this->imageSize;
     }
 
     public function getImageName(): ?string

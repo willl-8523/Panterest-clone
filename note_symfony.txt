@@ -54,3 +54,14 @@ Time twig
 Dimension image
     -> composer require liip/imagine-bundle => permet de créer des thumbnails (images miniatures)
     -> Configuration => https://symfony.com/bundles/LiipImagineBundle/current/filters/sizing.html
+    -> Afficher image dans twig => https://github.com/dustin10/VichUploaderBundle/blob/master/docs/generating_urls.md
+    -> Ajouter les dimensions de l'image dans twig => https://github.com/liip/LiipImagineBundle
+
+
+Copier le dossier images de assets dans public
+    -> Dans webpack.config.js ajouter
+        .copyFiles({
+            from: './assets/images',
+            to: '[path][name].[hash:8].[ext]',
+            context: './assets'
+        })

@@ -50,3 +50,7 @@ Invite de commande
 
 Time twig
     -> composer require knplabs/knp-time-bundle => nous donne le temps en durée (6 month ago)
+
+Dimension image
+    -> composer require liip/imagine-bundle => permet de créer des thumbnails (images miniatures)
+    -> Configuration => https://symfony.com/bundles/LiipImagineBundle/current/filters/sizing.html

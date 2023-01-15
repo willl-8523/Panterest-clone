@@ -7,7 +7,7 @@ Notes symfony
 
 - Le dossier Traits permet de regrouper du code reutilisable dans d'autre fichier php en utilisant => use nom_du_fichier 
 
-NB: Les bundles permettent d'avoir des fonctionnalité supplementaire
+NB: Les bundles permettent d'avoir des fonctionnalités supplementaires
 
 formulaire
     -> On peut modifier la methode de requête et l'action de soumission
@@ -65,3 +65,8 @@ Copier le dossier images de assets dans public
             to: '[path][name].[hash:8].[ext]',
             context: './assets'
         })
+
+
+Mise à jour des bundle
+    -> composer recipes => voir tous les bundle qui ont été mis à jour
+    -> si le bundle mailer à une nouvelle MAJ => composer recipes symfony/mailer pour voir les mis à jour et mettre à jour le bundle 

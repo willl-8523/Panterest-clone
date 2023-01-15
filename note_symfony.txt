@@ -66,6 +66,11 @@ Copier le dossier images de assets dans public
             context: './assets'
         })
 
+Creation de l'entité User
+    -> symfony console make:User
+    -> User implements UserInterface => signifie que User doit respecter le contrat de UserInterface (User utilisera les methodes abstraites de UserInterface)
+    -> Les methodes abstraites => méthodes sans corps 
+        exp: public function getRoles();
 
 Mise à jour des bundle
     -> composer recipes => voir tous les bundle qui ont été mis à jour

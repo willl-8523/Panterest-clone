@@ -1,0 +1,5 @@
+-> La securité
+    - Authentification
+    - Autorisation
+
+-> firewalls => permet de gérer la partie authentification 

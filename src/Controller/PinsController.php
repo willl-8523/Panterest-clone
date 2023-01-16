@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Pin;
 use App\Form\PinType;
 use App\Repository\PinRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,8 +16,9 @@ class PinsController extends AbstractController
     /**
      * @Route("/", name="app_home", methods={"GET"})
      */
-    public function index(PinRepository $pinRepository, EntityManagerInterface $em, UserRepository $userRepository): Response
+    public function index(PinRepository $pinRepository, EntityManagerInterface $em): Response
     {
+        
         // Ajouter un pin à un utilisateur
         // $p1 = $pinRepository->findOneBy(array('id' => 1));
         // $u1 = $userRepository->findOneBy(array('id' => 1));

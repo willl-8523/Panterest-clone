@@ -7,23 +7,22 @@
         <div class="col-md-6 mx-auto">
             <article class="pin bg-white rounded shadow">
                 <div class="mw-100 rounded-top overflow-hidden">
-                    <a href="{{ path('app_pins_show', {id : pin.id}) }}">
-                        <img src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('build/images/placeholder-image.png')) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100">
-                    </a>
+                    <img src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('build/images/placeholder-image.png')) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100">
                 </div>
-                
-                <h1 class="ps-3 pt-3 h5"> <a href="{{ path('app_pins_show', {id : pin.id}) }}" class="link-secondary text-decoration-none">{{ pin.title }}</a></h1>
+                <div class="p-3">
+                    <h1 class="h5 text-secondary">{{ pin.title }}</h1>
 
-                {# <p>{{ pin.description | u.truncate(23, '...', false) }}</p>
-                <p>Submitted at {{ pin.createdAt | ago }}</p> #}
+                    {# <p>{{ pin.description | u.truncate(23, '...', false) }}</p>
+                    <p>Submitted at {{ pin.createdAt | ago }}</p> #}
 
-                <p class="ps-3 pb-3 text-muted">
-                    <small> Submitted at 
-                        <time datetime="{{ pin.createdAt | date('Y-m-d') }}">{{ pin.createdAt | ago }}</time>  by {{ pin.user.fullName }}
-                    </small>
-                </p>
+                    <p class="text-muted">
+                        <small> Submitted at 
+                            <time datetime="{{ pin.createdAt | date('Y-m-d') }}">{{ pin.createdAt | ago }}</time>  by {{ pin.user.fullName }}
+                        </small>
+                    </p>
 
-                <p class="ps-3 pb-3"> {{ pin.description }}</p>
+                    <p class="pt-3 text-break"> {{ pin.description }}</p>
+                </div>
 
                 <div class="ps-3 pb-3">
                     <a href="{{ path('app_pins_edit', {'id' : pin.id }) }} " class="btn btn-light">Edit</a> 

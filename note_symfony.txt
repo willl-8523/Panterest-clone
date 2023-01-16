@@ -75,3 +75,13 @@ Creation de l'entité User
 Mise à jour des bundle
     -> composer recipes => voir tous les bundle qui ont été mis à jour
     -> si le bundle mailer à une nouvelle MAJ => composer recipes symfony/mailer pour voir les mis à jour et mettre à jour le bundle 
+
+Hachage mdp
+    -> Algorithme de hachage:
+        - mb5() sur 32 caract 
+        - sha256 sur 64 caract
+        - sha512 sur 128 caract
+    -> Si on hache le même msg on aura tjrs le même resultat
+        - Pour résoudre le problème on ajoute un sel chryptographique
+            exp: haché 'secret' avec mb5() => mb5('tata' . 'secret' . 'tata')
+                ici 'tata' est le sel chryptographique ce qui rendra la tâche plus difficile aux hackeurs de trouver le mdp ('secret')

@@ -14,7 +14,7 @@ final class Version20230116135440 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Create users table and add relation between pins ans users tables';
     }
 
     public function up(Schema $schema): void

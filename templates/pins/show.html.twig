@@ -19,7 +19,7 @@
 
                 <p class="ps-3 pb-3 text-muted">
                     <small> Submitted at 
-                        <time datetime="{{ pin.createdAt | date('Y-m-d') }}">{{ pin.createdAt | ago }}</time>  by [OWNER FULL NAME] 
+                        <time datetime="{{ pin.createdAt | date('Y-m-d') }}">{{ pin.createdAt | ago }}</time>  by {{ pin.user.fullName }}
                     </small>
                 </p>
 

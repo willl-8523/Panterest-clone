@@ -15,7 +15,7 @@ class AppFixtures extends Fixture
         $u1->setFirstName('Martial');
         $u1->setLastName('Mfoudi');
         $u1->setEmail('martial@example.com');
-        $u1->setPassword('$2y$13$pevV0TBXAAou3547b2TXJeNgoENAV3SskOw0dPo4/E.xEtTWnvxOy');
+        $u1->setPassword('$2y$13$YPRFxRLS29ouOnxUNlftHO9xQ7nkWTxtY1wd5W6VB5wl4iNVtVC7W');
         $manager->persist($u1);
 
         $p1 = new Pin();

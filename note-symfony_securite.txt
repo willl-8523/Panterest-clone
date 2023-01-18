@@ -1,5 +1,5 @@
 -> La securité
-    - Authentification
-    - Autorisation
+    - Authentification (qui vous êtes) => firewalls
+    - Autorisation (est ce que vous avez les droits)
 
 -> firewalls => permet de gérer la partie authentification 

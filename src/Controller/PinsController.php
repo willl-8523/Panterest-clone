@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Pin;
 use App\Form\PinType;
 use App\Repository\PinRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,9 +48,10 @@ class PinsController extends AbstractController
     /**
      * @Route("/pins/create", name="app_pins_create", methods={"GET", "POST"})
      */
-    public function create(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em, UserRepository $userRepository): Response
     {
         $pin = new Pin;
+        $user = $userRepository->findOneBy(array('id' => 3));
         
         // $form = $this->createFormBuilder(['title' => 'toto', 'description' => 'decription ...']) => prerempli le formulaire 
         // $form = $this->createFormBuilder($pin)
@@ -62,13 +64,13 @@ class PinsController extends AbstractController
         $form = $this->createForm(PinType::class, $pin);
 
         // permet de recuperer les données du formulaire via la request
-        ($form->handleRequest($request));
+        $form->handleRequest($request);
 
         // Si le formulaire est soumis et valide
         if ($form->isSubmitted() && $form->isValid()) {
 
             // $form->getData() => retounre un tableau contenant les données du form
-
+            $pin->setUser($user);
             $em->persist($pin);
             $em->flush();
 

@@ -15,11 +15,20 @@ security:
                 property: firstName
     firewalls:
         dev:
+            # On ne souhaite desactiver la securité sur la debug-bar, et les fichiers statiques (fichier Css et js, et sur les images)
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             lazy: true
             provider: app_user_provider
+            custom_authenticator: App\Security\LoginFormAuthenticator
+            logout:
+                path: app_logout
+                # where to redirect after logout
+                # target: app_any_route
+            remember_me:
+                secret:   '%kernel.secret%' # required
+                lifetime: 86400 # 1 day in seconds
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall

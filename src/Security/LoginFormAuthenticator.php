@@ -64,7 +64,7 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
         // Ajouter un message flash hors du controller
         // $request->getSession()->getFlashBag()->add('success', 'Logged succefully'); OU
-        $this->container->get('request_stack')->getSession()->getFlashBag()->add('success', 'Logged succefully'); 
+        $this->container->get('request_stack')->getSession()->getFlashBag()->add('success', 'Logged succefully');
 
         return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }

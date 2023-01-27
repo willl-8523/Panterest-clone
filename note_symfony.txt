@@ -47,6 +47,7 @@ Invite de commande
     -> Avoir les données une bdd: use nom_bdd;
     -> Voir les tables de bdd: show tables
     -> Afficher la description d'une table: describe nom_table
+    -> Mieux detailler une table => select * from users \G
 
 Time twig
     -> composer require knplabs/knp-time-bundle => nous donne le temps en durée (6 month ago)

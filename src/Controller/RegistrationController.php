@@ -35,6 +35,7 @@ class RegistrationController extends AbstractController
         // Evite d'aller à /register si on est connecté
         if ($this->getUser()) {
             $this->addFlash('error', 'Already logged in!');
+            
             return $this->redirectToRoute('app_home');
         }
 
@@ -95,9 +96,9 @@ class RegistrationController extends AbstractController
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
         } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
+            $this->addFlash('error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
-            return $this->redirectToRoute('app_register');
+            return $this->redirectToRoute('app_home');
         }
 
         // @TODO Change the redirect on success and handle or remove the flash message in your templates

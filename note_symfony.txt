@@ -48,6 +48,7 @@ Invite de commande
     -> Voir les tables de bdd: show tables
     -> Afficher la description d'une table: describe nom_table
     -> Mieux detailler une table => select * from users \G
+    -> truncate pins => supprime le contenu du tableau et réinitialise les id auto-increment
 
 Time twig
     -> composer require knplabs/knp-time-bundle => nous donne le temps en durée (6 month ago)

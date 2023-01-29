@@ -8,3 +8,4 @@ package de fausses données
         -> Telecharger le fichier et le deplacer dans le projet sur le dossier racine
         -> Se deplacer sur le dossier racine, Se connecter a la bdd avec l'invite de commande
         -> Ensuite taper => source pins.sql (le fichier généré par mockaroo) 
+    -> Best practice => https://symfony.com/doc/5.4/best_practices.html

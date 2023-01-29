@@ -59,9 +59,13 @@ class RegistrationController extends AbstractController
             $entityManager->flush();
 
             // generate a signed url and email it to the user
+            // $this->getParameter('app.mail_from_address') => permet de récuperer la valeur de app . mail_from_address dans config/services.yaml
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address('noreply@panterest.com', 'Panterest'))
+                    ->from(new Address(
+                        $this->getParameter('app.mail_from_address'),
+                        $this->getParameter('app.mail_from_name')
+                    ))
                     ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('emails/registration/confirmation_email.html.twig')

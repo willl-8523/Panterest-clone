@@ -43,6 +43,12 @@ class ResetPasswordController extends AbstractController
      */
     public function request(Request $request, MailerInterface $mailer, TranslatorInterface $translator): Response
     {
+
+        if ($this->getUser()) {
+            $this->addFlash('error', 'Already logged in!');
+            return $this->redirectToRoute('app_home');
+        }
+        
         $form = $this->createForm(ResetPasswordRequestFormType::class);
         $form->handleRequest($request);
 
@@ -120,7 +126,7 @@ class ResetPasswordController extends AbstractController
             // Encode(hash) the plain password, and set it.
             $encodedPassword = $userPasswordHasher->hashPassword(
                 $user,
-                $form->get('plainPassword')->getData()
+                $form->get('newPassword')->getData()
             );
 
             $user->setPassword($encodedPassword);

@@ -18,7 +18,6 @@ class PinsController extends AbstractController
      */
     public function index(PinRepository $pinRepository, EntityManagerInterface $em): Response
     {
-        
         // Ajouter un pin à un utilisateur
         // $p1 = $pinRepository->findOneBy(array('id' => 1));
         // $u1 = $userRepository->findOneBy(array('id' => 1));
@@ -49,6 +48,7 @@ class PinsController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
+
         $pin = new Pin;
         
         // $form = $this->createFormBuilder(['title' => 'toto', 'description' => 'decription ...']) => prerempli le formulaire 

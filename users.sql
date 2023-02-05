@@ -1,0 +1,10 @@
+insert into users (first_name, last_name, email, password) values ('Elwyn', 'Sharnock', 'esharnock0@craigslist.org', 'VaC0huOnA');
+insert into users (first_name, last_name, email, password) values ('Atlanta', 'Dymock', 'adymock1@marriott.com', '1uYd5a');
+insert into users (first_name, last_name, email, password) values ('Katerina', 'Mazzey', 'kmazzey2@opera.com', 'eghs1G5CCjdK');
+insert into users (first_name, last_name, email, password) values ('Kent', 'Leroy', 'kleroy3@walmart.com', 'hqLdOTJWG');
+insert into users (first_name, last_name, email, password) values ('Darlleen', 'Morales', 'dmorales4@sitemeter.com', 'C3GbFuXIxVh2');
+insert into users (first_name, last_name, email, password) values ('Lion', 'Blenkiron', 'lblenkiron5@cam.ac.uk', 'tawFZyz');
+insert into users (first_name, last_name, email, password) values ('Brenda', 'Litt', 'blitt6@mail.ru', 'TZdnqOZGpV9');
+insert into users (first_name, last_name, email, password) values ('Aurore', 'Shillam', 'ashillam7@ameblo.jp', 'L1Mp5bGqpY');
+insert into users (first_name, last_name, email, password) values ('Dulce', 'Milesop', 'dmilesop8@typepad.com', 'IGDUscF');
+insert into users (first_name, last_name, email, password) values ('Cory', 'Chilcott', 'cchilcott9@barnesandnoble.com', 'RzonwKG');

@@ -23,6 +23,10 @@ security:
             provider: app_user_provider
             custom_authenticator: App\Security\LoginFormAuthenticator
             logout:
+                # csrf_parameter: _csrf_token => si on souhaite modifier le name du csrf
+                # csrf_token_id: logout => permet de modifier logout dans csrf_token('logout')
+                # csrf_token_generator: ~ => ~ signifie null
+                csrf_token_generator: Symfony\Component\Security\Csrf\CsrfTokenManagerInterface
                 path: app_logout
                 # where to redirect after logout
                 # target: app_any_route

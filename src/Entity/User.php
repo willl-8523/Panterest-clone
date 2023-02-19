@@ -178,6 +178,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return null;
     }
 
+    /* Si vous stockez des données temporaires et sensibles sur l'utilisateur,      effacez-les ici.
+    */
     /**
      * @see UserInterface
      */
@@ -221,6 +223,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getFullName(): string
     {
         return $this->getFirstName() . ' ' . $this->getLastName() ;
+    }
+
+    /* 
+        Get link to create avatar on gravatar
+        https://fr.gravatar.com/site/implement/images/php/ 
+    */
+    public function gravatar(?int $size = 100)
+    {
+        return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->getEmail() ) ) ) . "/?s=" . $size;
     }
 
     public function getIsVerified(): bool

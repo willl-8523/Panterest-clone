@@ -1,0 +1,26 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title 'Account'%}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto text-center">
+            <h1 class="my-5">Profile</h1>
+
+            {# Use function gravatar in user entity #}
+            <img src="{{ app.user.gravatar }}" alt="{{ app.user.fullName }}'s Avatar" class="shadow rounded-circle">
+            {# 
+                Generer un avatar en fonction de l'adresse material
+                $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;  
+            #}
+
+            <p class="mt-5 lead">{{ app.user.email }}</p>
+
+            <h2>{{ app.user.fullName }}</h2>
+
+            <p>
+                <a href="">Edit Account</a> | <a href="">Change Password</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

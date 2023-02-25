@@ -229,7 +229,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         Get link to create avatar on gravatar
         https://fr.gravatar.com/site/implement/images/php/ 
     */
-    public function gravatar(?int $size = 100)
+    public function getGravatarUrl(?int $size = 100)
     {
         return "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->getEmail() ) ) ) . "/?s=" . $size;
     }

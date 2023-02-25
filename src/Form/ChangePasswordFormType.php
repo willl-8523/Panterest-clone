@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -14,6 +15,28 @@ class ChangePasswordFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        // dd($options);
+
+        /*  si current_password_is_required => true alors ajoute le champ
+            currentPassWord
+        */
+        if ($options['current_password_is_required']) {
+            $builder
+                ->add('currentPassword', PasswordType::class, [
+                    'label' => 'Current Password',
+                    'attr' => [
+                        'autocomplete' => 'off',
+                    ],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter your current Password',
+                        ]),
+                        // Verifie si le mdp entrer = mdp courant
+                        new UserPassword(['message' => 'Invalid current password.']),
+                    ]
+                ]);
+        }
+
         $builder
             ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -46,6 +69,18 @@ class ChangePasswordFormType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults([]);
+        /* On configure a false par defaut */
+        $resolver->setDefaults([
+            'current_password_is_required' => false,
+        ]);
+
+        /*  Typer current_password_is_required
+            Voir https://symfony.com/doc/5.4/components/options_resolver.html#value-validation => types validation
+        */
+        $resolver->setAllowedTypes('current_password_is_required', 'bool');
+
+        /* Autoriser +sieurs types 
+           $resolver->setAllowedTypes('current_password_is_required', ['bool', 'string', ..]) 
+        */
     }
 }

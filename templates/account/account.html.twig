@@ -8,7 +8,7 @@
             <h1 class="my-5">Profile</h1>
 
             {# Use function gravatar in user entity #}
-            <img src="{{ app.user.gravatar }}" alt="{{ app.user.fullName }}'s Avatar" class="shadow rounded-circle">
+            <img src="{{ app.user.getGravatarUrl }}" alt="{{ app.user.fullName }}'s Avatar" class="shadow rounded-circle">
             {# 
                 Generer un avatar en fonction de l'adresse material
                 $grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;  

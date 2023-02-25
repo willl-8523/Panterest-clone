@@ -46,6 +46,7 @@ class ResetPasswordController extends AbstractController
 
         if ($this->getUser()) {
             $this->addFlash('error', 'Already logged in!');
+
             return $this->redirectToRoute('app_home');
         }
         
@@ -134,6 +135,8 @@ class ResetPasswordController extends AbstractController
 
             // The session is cleaned up after the password has been changed.
             $this->cleanSessionAfterReset();
+
+            $this->addFlash('success', 'Your passmword has been successfully rest. You can log in with the new password.');
 
             return $this->redirectToRoute('app_home');
         }

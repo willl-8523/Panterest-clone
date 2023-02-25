@@ -1,0 +1,3 @@
+-> Tout ce qui ce passe dans SecurityCOntroller logout ne sera pas executé
+
+-> Lors de la deconnexion symfony emet un evenement LogoutEvent

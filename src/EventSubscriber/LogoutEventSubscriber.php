@@ -29,7 +29,7 @@ class LogoutEventSubscriber implements EventSubscriberInterface
         // Afficher le message flash 
         $this->flashbag->add(
             'success',
-            'Logged out successfully!',
+            'Bye bye ' . $event->getToken()->getUser()->getUserIdentifier() . '!',
         );
 
         // Route de redirection

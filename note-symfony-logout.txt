@@ -1,3 +1,9 @@
--> Tout ce qui ce passe dans SecurityCOntroller logout ne sera pas executé
+Ajouter un addFlash lors de la deconnexion: 
+    -> Tout ce qui ce passe dans SecurityCOntroller logout ne sera pas executé
 
--> Lors de la deconnexion symfony emet un evenement LogoutEvent
+    -> Lors de la deconnexion symfony emet un evenement LogoutEvent en créant un EventSubscriber
+
+    crée un EventSubscriber:
+    => make:subscriber LogoutEventSubscriber
+    => souscrire à l'evenement logoutEvent
+    => choisir Symfony\Component\Security\Http\Event\LogoutEvent

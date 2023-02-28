@@ -4,7 +4,9 @@ Notes symfony
 - Dans entity @ORM\Table(name="pins") renomme le nom de la table
 - symfony console debug:router => liste les #tes routes
 - symfony console doctrine:migrations:migrate prev => annule la derniere migration
-
+- symfony console debug:autowiring => liste les dependances d'un service
+    exp: symfony console debug:autowiring router => liste les dependances pour le services generer une route (router)
+    
 - Le dossier Traits permet de regrouper du code reutilisable dans d'autre fichier php en utilisant => use nom_du_fichier 
 
 NB: Les bundles permettent d'avoir des fonctionnalités supplementaires

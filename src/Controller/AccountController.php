@@ -26,6 +26,12 @@ class AccountController extends AbstractController
      */
     public function show(): Response
     {
+        if (!$this->getUser()) {
+            $this->addFlash('error', 'You must be connected!');
+
+            return $this->redirectToRoute('app_login');
+        }
+
         return $this->render('account/account.html.twig');
     }
 

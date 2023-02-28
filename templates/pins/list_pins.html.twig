@@ -24,7 +24,7 @@
                             <p>Submitted at {{ pin.createdAt | ago }}</p> #}
                             <p class="px-3 pb-3 text-muted d-flex justify-content-between align-items-center">
                                 <small> Submitted by {{ pin.user.fullName }} </small>
-                                <a href="#" class="text-muted" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('js-pin-delete-form-{{ pin.id }}').submit();"><i class="material-icons">delete</i></a>
+                                {# <a href="#" class="text-muted" onclick="event.preventDefault(); confirm('Are you sure ?') && document.getElementById('js-pin-delete-form-{{ pin.id }}').submit();"><i class="material-icons">delete</i></a> #}
 
                                 <form id="js-pin-delete-form-{{ pin.id }}" action="{{ path('app_pins_delete', {'id' : pin.id }) }}" method="post">
                                     <input type="hidden" name='csrf_token' value="{{ csrf_token('pin_deletion_' ~ pin.id) }}">

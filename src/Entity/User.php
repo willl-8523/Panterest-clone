@@ -142,6 +142,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
+        // array_unique() => retourne les valeur unique du tableau
         return array_unique($roles);
     }
 

@@ -6,6 +6,13 @@
     <div class="row">
         <div class="col-md-6 mx-auto">
             <h1>Create pin</h1>
+            {#  
+                Donne des restrictions en fonction du role de l'utilisateur
+                 
+                {% if is_granted('ROLE_USER') %}
+                    <p>Content admin pins</p>
+                {% endif %}
+            #}
             {{ include('/pins/_form.html.twig') }}
         </div>
     </div>

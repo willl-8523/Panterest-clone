@@ -3,16 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Pin;
+use App\Entity\User;
 use App\Form\PinType;
 use App\Repository\PinRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PinsController extends AbstractController
 {
+    
     /**
      * @Route("/", name="app_home", methods={"GET"})
      */
@@ -43,11 +46,26 @@ class PinsController extends AbstractController
         // compact('pins') => ['pins' => $pins]
     }
 
+    /* 
+        @Security("is_granted('ROLE_USER') && user.getIsVerified()") => Verifie si l'utilisateur est connecté et verifie si son compte est verifié
+    */
     /**
      * @Route("/pins/create", name="app_pins_create", methods={"GET", "POST"})
+     * @Security("is_granted('ROLE_USER') && user.getIsVerified()", message="You need to have a verified account")
      */
     public function create(Request $request, EntityManagerInterface $em): Response
     {
+        // if (!$this->getUser()) {
+        //     throw $this->createAccessDeniedException();
+        // }
+
+        // if (! $this->getUser()->getIsVerified()) {
+
+        //     // $this->addFlash('error', 'You need to have a verified account');
+        //     // return $this->redirectToRoute('app_home');
+
+        //     throw $this->createAccessDeniedException('You need to have a verified account');
+        // }
 
         $pin = new Pin;
         
@@ -86,18 +104,20 @@ class PinsController extends AbstractController
      * @Route("/pins/{id<[0-9]+>}", name="app_pins_show", methods={"GET"})
      */
     public function show(Pin $pin): Response
-    {
+    {        
         return $this->render('pins/show.html.twig', compact('pin'));
     }
 
     /**
      * @Route("/pins/{id<[0-9]+>}/edit", name="app_pins_edit", methods={"GET", "PUT"})
+     * @Security("is_granted('ROLE_USER') && user.getIsVerified() && pin.getUser() == user", message="You need to have a verified account"
      */
     public function edit(Pin $pin, Request $request, EntityManagerInterface $em): Response
-    {
+    {   
         $form = $this->createForm(PinType::class, $pin, [
             'method' => 'PUT',
         ]);
+        
         // J'ai trouvé une réponse dans les messages de la vidéo et pour moi ça a marché aussi : Dans packages>framework.yaml , mettre a true http_method_override
 
         $form->handleRequest($request);
@@ -120,9 +140,11 @@ class PinsController extends AbstractController
 
     /**
      * @Route("/pins/{id<[0-9]+>}", name="app_pins_delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER') && user.getIsVerified() && pin.getUser() == user", message="You need to have a verified account")
      */
     public function delete(Request $request, Pin $pin, EntityManagerInterface $em): Response
     {
+        
         $csrf = $request->request->get('csrf_token');
         if ($this->isCsrfTokenValid('pin_deletion_' . $pin->getId(), $csrf)) {
             

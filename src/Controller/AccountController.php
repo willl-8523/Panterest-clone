@@ -2,22 +2,34 @@
 
 namespace App\Controller;
 
-use App\Form\ChangePasswordFormType;
 use App\Form\UserFormType;
-use Doctrine\ORM\EntityManager;
+use App\Form\ChangePasswordFormType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /*  
     @Route("/account") => placé là factorise les routes dans la class
+
+    IsGranted => donne des restrictions, il peut s'appliquer à la classe ou a chaque route
+    https://symfony.com/bundles/SensioFrameworkExtraBundle/5.0/annotations/security.html
+
+    
+    Seul les utilisateurs ayant le rôle ROLE_ADMIN 
+    peuvent accéder à cette page
+
+    $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    
 */
+
     
 /**
  * @Route("/account")
+ * @IsGranted("ROLE_USER")
  */
 class AccountController extends AbstractController
 {
@@ -26,12 +38,6 @@ class AccountController extends AbstractController
      */
     public function show(): Response
     {
-        if (!$this->getUser()) {
-            $this->addFlash('error', 'You must be connected!');
-
-            return $this->redirectToRoute('app_login');
-        }
-
         return $this->render('account/account.html.twig');
     }
 
